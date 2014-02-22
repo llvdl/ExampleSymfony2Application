@@ -1,0 +1,13 @@
+Finalist\TweeterCoreBundle\Entity\Tweeter:
+    type: entity
+    table: tweeter
+    id:
+        id:
+            type: Finalist_TweeterCoreBundle_Repository_Type_IdType
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 128
+            unique: true

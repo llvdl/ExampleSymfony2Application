@@ -1,0 +1,17 @@
+Finalist\TweeterCoreBundle\Entity\Tweet:
+    type: entity
+    table: tweet
+    id:
+        id:
+            type: Finalist_TweeterCoreBundle_Repository_Type_IdType
+            generator:
+                strategy: AUTO
+    fields:
+        text:
+            type: string
+            length: 255
+        timestamp:
+            type: integer
+    manyToOne:
+        tweeter:
+            targetEntity: Finalist\TweeterCoreBundle\Entity\Tweeter

@@ -1,0 +1,4 @@
+lennaert:
+    resource: "@LennaertBundle/Resources/config/routing.yml"
+    prefix:   /
+

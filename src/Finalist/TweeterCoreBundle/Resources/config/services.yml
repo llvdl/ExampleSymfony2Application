@@ -1,0 +1,19 @@
+parameters:
+    finalist_tweeter_core.tweeter_service.class: Finalist\TweeterCoreBundle\Entity\TweeterService
+    finalist_tweeter_core.tweet_repository.class: Finalist\TweeterCoreBundle\Repository\TweetRepositoryDoctrineImpl
+    finalist_tweeter_core.tweeter_repository.class: Finalist\TweeterCoreBundle\Repository\TweeterRepositoryDoctrineImpl
+
+services:
+    finalist_tweeter_core.tweeter_repository:
+        class: %finalist_tweeter_core.tweeter_repository.class%
+        arguments: [@doctrine.orm.entity_manager]
+        public: false
+    finalist_tweeter_core.tweet_repository:
+        class: %finalist_tweeter_core.tweet_repository.class%
+        arguments: [@doctrine.orm.entity_manager]
+        public: false
+
+    finalist_tweeter_core.tweeter_service:
+        class: %finalist_tweeter_core.tweeter_service.class%
+        arguments: [@finalist_tweeter_core.tweeter_repository, @finalist_tweeter_core.tweet_repository]
+
