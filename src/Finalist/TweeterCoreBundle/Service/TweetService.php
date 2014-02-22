@@ -1,6 +1,13 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Entity;
+namespace Finalist\TweeterCoreBundle\Service;
+
+use Finalist\TweeterCoreBundle\Repository\TweetRepository;
+use Finalist\TweeterCoreBundle\Repository\TweeterRepository;
+use Finalist\TweeterCoreBundle\Exception\DomainException;
+
+use Finalist\TweeterCoreBundle\Entity\Tweet;
+use Finalist\TweeterCoreBundle\Entity\Tweeter;
 
 class TweetService {
 

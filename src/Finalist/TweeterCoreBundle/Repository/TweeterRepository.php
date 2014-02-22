@@ -1,6 +1,8 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Entity;
+namespace Finalist\TweeterCoreBundle\Repository;
+
+use Finalist\TweeterCoreBundle\Entity\Tweeter;
 
 interface TweeterRepository {
     

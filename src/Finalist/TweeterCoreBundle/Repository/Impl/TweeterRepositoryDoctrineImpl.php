@@ -1,11 +1,11 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Repository;
+namespace Finalist\TweeterCoreBundle\Repository\Impl;
 
-use Finalist\TweeterCoreBundle\Entity\TweeterRepository;
+use Finalist\TweeterCoreBundle\Repository\TweeterRepository;
 use Finalist\TweeterCoreBundle\Entity\Tweeter;
 use Doctrine\ORM\EntityManager;
-use Finalist\TweeterCoreBundle\Entity\DomainException;
+use Finalist\TweeterCoreBundle\Exception\DomainException;
 
 class TweeterRepositoryDoctrineImpl implements TweeterRepository {
     

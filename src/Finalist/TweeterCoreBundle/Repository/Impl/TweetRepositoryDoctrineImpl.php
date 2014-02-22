@@ -1,8 +1,8 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Repository;
+namespace Finalist\TweeterCoreBundle\Repository\Impl;
 
-use Finalist\TweeterCoreBundle\Entity\TweetRepository;
+use Finalist\TweeterCoreBundle\Repository\TweetRepository;
 use Doctrine\ORM\EntityManager;
 use Finalist\TweeterCoreBundle\Entity\Tweeter;
 use Finalist\TweeterCoreBundle\Entity\Tweet;

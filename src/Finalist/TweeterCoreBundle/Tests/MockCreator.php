@@ -5,11 +5,11 @@ namespace Finalist\TweeterCoreBundle\Tests;
 trait MockCreator {
     
     private function createTweetRepositoryMock() {
-        return $this->createMock('Finalist\TweeterCoreBundle\Entity\TweetRepository');
+        return $this->createMock('Finalist\TweeterCoreBundle\Repository\TweetRepository');
     }
     
     private function createTweeterRepositoryMock() {
-        return $this->createMock('Finalist\TweeterCoreBundle\Entity\TweeterRepository');
+        return $this->createMock('Finalist\TweeterCoreBundle\Repository\TweeterRepository');
     }
     
     private function createTweetMock() {

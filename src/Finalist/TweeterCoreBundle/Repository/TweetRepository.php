@@ -1,6 +1,9 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Entity;
+namespace Finalist\TweeterCoreBundle\Repository;
+
+use Finalist\TweeterCoreBundle\Entity\Tweeter;
+use Finalist\TweeterCoreBundle\Entity\Tweet;
 
 interface TweetRepository {
     
@@ -17,7 +20,6 @@ interface TweetRepository {
      * @return Finalist\Tweetr\Domain\Tweet[] list of tweeters, sorted by most recent first
      */
     public function FindByTweeter(Tweeter $tweeter);
-    
     
     /**
      * adds a tweet to the repository

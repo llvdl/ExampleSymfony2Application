@@ -1,15 +1,15 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Tests\Repository;
+namespace Finalist\TweeterCoreBundle\Tests\Repository\Impl;
 
-use Finalist\TweeterCoreBundle\Repository\TweetRepositoryDoctrineImpl;
+use Finalist\TweeterCoreBundle\Repository\Impl\TweetRepositoryDoctrineImpl;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 use Finalist\TweeterCoreBundle\Entity\Tweet;
 
 class TweetRepositoryDoctrineImplTest extends WebTestCase {
 
-    use EntityManagerCreator;
+    use \Finalist\TweeterCoreBundle\Tests\Repository\EntityManagerCreator;
     
     /** @var \Doctrine\ORM\EntityManager */
     private $entityManager;

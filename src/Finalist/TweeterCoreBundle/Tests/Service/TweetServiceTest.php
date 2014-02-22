@@ -1,16 +1,16 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Tests\Entity;
+namespace Finalist\TweeterCoreBundle\Tests\Service;
 
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
-use Finalist\TweeterCoreBundle\Entity\TweetService;
+use Finalist\TweeterCoreBundle\Service\TweetService;
 
 class TweetServiceTest extends TestCase {
 
     use \Finalist\TweeterCoreBundle\Tests\MockCreator;
     
-    /** @var Finalist\TweeterCoreBundle\Entity\TweetService */
+    /** @var Finalist\TweeterCoreBundle\Service\TweetService */
     private $subject;
     
     private $tweetRepositoryMock;
@@ -37,7 +37,7 @@ class TweetServiceTest extends TestCase {
         $this->assertSame($tweetMocks, $this->subject->getRecentTweets());
     }
     
-    /** @expectedException \Finalist\TweeterCoreBundle\Entity\DomainException */
+    /** @expectedException \Finalist\TweeterCoreBundle\Exception\DomainException */
     public function testGetRecentTweetsForTweeterNotFoundThrowsException() {
         $this->tweeterRepositoryMock->expects($this->once())
                 ->method('findByName')

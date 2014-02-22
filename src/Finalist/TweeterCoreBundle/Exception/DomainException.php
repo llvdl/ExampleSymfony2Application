@@ -1,6 +1,6 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Entity;
+namespace Finalist\TweeterCoreBundle\Exception;
 
 class DomainException extends \Exception {
     

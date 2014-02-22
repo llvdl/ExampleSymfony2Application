@@ -1,20 +1,20 @@
 <?php
 
-namespace Finalist\TweeterCoreBundle\Tests\Repository;
+namespace Finalist\TweeterCoreBundle\Tests\Repository\Impl;
 
-use Finalist\TweeterCoreBundle\Repository\TweeterRepositoryDoctrineImpl;
+use Finalist\TweeterCoreBundle\Repository\Impl\TweeterRepositoryDoctrineImpl;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 use Finalist\TweeterCoreBundle\Entity\Tweeter;
 
 class TweeterRepositoryDoctrineImplTest extends WebTestCase {
 
-    use EntityManagerCreator;
+    use \Finalist\TweeterCoreBundle\Tests\Repository\EntityManagerCreator;
     
     /** @var \Doctrine\ORM\EntityManager */
     private $entityManager;
 
-    /** @var \Finalist\TweeterCoreBundle\Entity\TweeterRepositoryImpl */
+    /** @var \Finalist\TweeterCoreBundle\Repository\Impl\TweeterRepositoryDoctrineImpl */
     private $subject;
     
     public function setUp() {
@@ -41,7 +41,7 @@ class TweeterRepositoryDoctrineImplTest extends WebTestCase {
         $this->assertSame($tweeter->getId(), $loadedTweeter->getId());
     }
     
-    /** @expectedException \Finalist\TweeterCoreBundle\Entity\DomainException */
+    /** @expectedException \Finalist\TweeterCoreBundle\Exception\DomainException */
     public function testAddExistingThrowsDomainException() {
         $this->assertNotNull($this->loadTweeterByName('tweeter one tweet'));
         
