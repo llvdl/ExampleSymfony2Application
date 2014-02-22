@@ -3,7 +3,7 @@ Finalist\TweeterCoreBundle\Entity\Tweeter:
     table: tweeter
     id:
         id:
-            type: Finalist_TweeterCoreBundle_Repository_Type_IdType
+            type: integer
             generator:
                 strategy: AUTO
     fields:

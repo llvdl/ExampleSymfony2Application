@@ -9,12 +9,14 @@ use Finalist\TweeterCoreBundle\Entity\Tweet;
 
 class TweetRepositoryDoctrineImpl implements TweetRepository {
 
+    /** @var \Doctrine\ORM\EntityManager */
     private $entityManager;
 
     public function __construct(EntityManager $entityManager) {
         $this->entityManager = $entityManager;
     }
 
+    /** @return \Finalist\TweeterCoreBundle\Entity\Tweet[] */
     public function FindByTweeter(Tweeter $tweeter) {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('tweet, tweeter')
@@ -22,7 +24,7 @@ class TweetRepositoryDoctrineImpl implements TweetRepository {
                 ->leftJoin('tweet.tweeter', 'tweeter')
                 ->where('tweeter.id = :tweeter_id')
                 ->orderBy('tweet.timestamp', 'DESC')
-                ->setParameter('tweeter_id', $tweeter->getId()->getValue());
+                ->setParameter('tweeter_id', $tweeter->getId());
         
         $query = $queryBuilder->getQuery();
         return $query->getResult();
@@ -33,13 +35,22 @@ class TweetRepositoryDoctrineImpl implements TweetRepository {
         $this->entityManager->flush();
     }
 
+    /** @return \Finalist\TweeterCoreBundle\Entity\Tweet[] */
     public function findMostRecent($maxAmount) {
-        $dql = 'SELECT tweet, tweeter'
-                . ' FROM Tweet tweet'
-                . ' LEFT JOIN tweet.tweeter tweeter'
-                . ' ORDER BY tweet.timestamp DESC';
-        $query = $this->entityManager->createQuery($dql)->setMaxResults($maxAmount);
+        $queryBuilder = $this->createQueryBuilder();
+        $queryBuilder->select('tweet, tweeter')
+                ->from('Finalist\TweeterCoreBundle\Entity\Tweet', 'tweet')
+                ->leftJoin('tweet.tweeter', 'tweeter')
+                ->orderBy('tweet.timestamp', 'DESC')
+                ->setMaxResults($maxAmount);
+        
+        $query = $queryBuilder->getQuery();
         return $query->getResult();
+    }
+    
+    /** @return Doctrine\ORM\QueryBuilder */
+    private function createQueryBuilder() {
+        return $this->entityManager->createQueryBuilder();
     }
 
 }

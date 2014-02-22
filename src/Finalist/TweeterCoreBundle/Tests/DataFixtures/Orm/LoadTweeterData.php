@@ -18,8 +18,6 @@ class LoadTweeterData extends AbstractFixture implements OrderedFixtureInterface
         $tweeters = $this->createTweeters();
         $this->persist($manager, $tweeters);
         $this->addReferences($tweeters);
-        
-        var_dump($tweeters); die;
     }
     
     private function createTweeters() {

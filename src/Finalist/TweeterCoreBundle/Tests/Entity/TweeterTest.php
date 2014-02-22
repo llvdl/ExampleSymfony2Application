@@ -22,13 +22,11 @@ class TweeterTest extends TestCase {
     }
     
     public function testGetIdReturnsPrivateIdProperty() {
-        $idMock = $this->createIdMock();
-        
         $reflector = new \ReflectionProperty(get_class($this->subject), 'id');
         $reflector->setAccessible(true);
-        $reflector->setValue($this->subject, $idMock);
+        $reflector->setValue($this->subject, 13);
         
-        $this->assertSame($idMock, $this->subject->getId());
+        $this->assertSame(13, $this->subject->getId());
     }
     
 }

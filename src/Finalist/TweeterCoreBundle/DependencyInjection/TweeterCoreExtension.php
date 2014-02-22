@@ -7,8 +7,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-use Finalist\TweeterCoreBundle\Repository\Type\IdType;
-
 /**
  * This is the class that loads and manages your bundle configuration
  *
@@ -16,15 +14,11 @@ use Finalist\TweeterCoreBundle\Repository\Type\IdType;
  */
 class TweeterCoreExtension extends Extension
 {
-    const DOCTRINE_DBAL_TYPES_KEY = 'doctrine.dbal.connection_factory.types';
-    
     /**
      * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $this->registerCustomType($container, IdType::ID_TYPE, 'Finalist\TweeterCoreBundle\Repository\Type\IdType');
-
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         
@@ -32,12 +26,4 @@ class TweeterCoreExtension extends Extension
         $loader->load('services.yml');
     }
     
-    private function registerCustomType(ContainerBuilder $container, $id, $typeClassName) {
-        $parameter = $container->getParameter(self::DOCTRINE_DBAL_TYPES_KEY);
-        $parameter[$id] = [
-          'class'=>$typeClassName,
-          'commented'=>true
-        ];
-        $container->setParameter(self::DOCTRINE_DBAL_TYPES_KEY, $parameter);
-    }
 }

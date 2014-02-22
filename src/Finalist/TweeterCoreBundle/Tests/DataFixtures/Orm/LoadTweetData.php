@@ -18,7 +18,7 @@ class LoadTweetData extends AbstractFixture implements OrderedFixtureInterface {
         $tweeter1 = $this->getReference('tweeter-1-many-tweets');
         $tweeter2 = $this->getReference('tweeter-2-one-tweet');
         
-        $tweet1 = new Tweet($tweeter1, 'my first tweet', 123456);
+        $tweet1 = new Tweet($tweeter1, 'my first tweet', 123450);
         $tweet2 = new Tweet($tweeter1, 'my second tweet', 123457);
         $tweet3 = new Tweet($tweeter1, 'my third tweet', 123458);
         $tweet4 = new Tweet($tweeter2, 'a text', 123456);
