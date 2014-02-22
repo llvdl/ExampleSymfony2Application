@@ -86,7 +86,7 @@ class TweetServiceTest extends TestCase {
         $this->assertInstanceOf('Finalist\TweeterCoreBundle\Entity\Tweet', $tweet);
         $this->assertSame('timmy tweeter', $tweet->getTweeter()->getName());
         $this->assertSame('my first tweet', $tweet->getText());
-        $this->assertGreaterThan(time() - 2, $tweet->getTimestamp());
-        $this->assertLessThanOrEqual(time(), $tweet->getTimestamp());
+        $this->assertGreaterThan(time() - 2, $tweet->getTimestamp(), 'tweet is no more than 2 seconds old');
+        $this->assertLessThanOrEqual(time(), $tweet->getTimestamp(), 'tweet timestamp cannot be in the future');
     }
 }
