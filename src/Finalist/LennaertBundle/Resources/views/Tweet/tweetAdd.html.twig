@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}LennaertBundle:Tweet:tweetAdd{% endblock %}
+
+{% block body %}
+<h1>{{"Add a tweet"|trans}}</h1>
+
+{{form(form,{'attr': {'novalidate': 'novalidate'}})}}
+
+{% endblock %}
+

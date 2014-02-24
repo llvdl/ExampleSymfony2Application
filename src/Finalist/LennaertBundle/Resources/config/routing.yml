@@ -1,3 +1,8 @@
 lennaert_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: LennaertBundle:Default:index }
+
+lennaert_tweet:
+    resource: "@LennaertBundle/Controller/TweetController.php"
+    type:     annotation
+    prefix:   /tweet

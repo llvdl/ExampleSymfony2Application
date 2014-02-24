@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}LennaertBundle:Tweet:tweetList{% endblock %}
+
+{% block body %}
+<h1>{{"Interesting Tweets"|trans}}</h1>
+
+<form action="{{path('_tweets_home')}}">
+    <button type="submit">{{"Back to homepage"|trans}}</button>
+</form>
+
+<h2>{{"Tweets by :name"|trans({":name":name})}}</h2>
+{% if tweets|length > 0 %}
+<dl>
+    {% for tweet in tweets %}
+    <dt>{{tweet.timestamp|date("c")}}</dt>
+    <dd>
+        {{tweet.text}}
+    </dd>
+    {% endfor %}
+</dl>
+{% else %}
+<p>{{"This tweeter has not tweeted yet."|trans}}</p>
+{% endif %}
+
+{% endblock %}

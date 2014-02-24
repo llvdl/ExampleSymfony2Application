@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}LennaertBundle:Tweet:home{% endblock %}
+
+{% block body %}
+<h1>Welcome to Tweeter</h1>
+
+<form action="{{path('_tweet_create')}}" method="GET">
+    <button type="submit">{{"Add a tweet"|trans}}</button>
+</form>
+
+
+<h2>Recent tweets</h2>
+<table>
+    <tr>
+        <td>
+            <img src="{{asset('bundles/lennaert/images/bird-blue.png')}}" height="400" align="left"/>
+        </td>
+        <td>
+        {% if recentTweets|length > 0 %}
+        <dl>
+            {% for tweet in recentTweets %}
+            <dt>
+            {% set url = path('_tweets_for_name', {'name':tweet.tweeter.name}) %}
+            {{"<a href=\":url\">:name</a> tweeted on :date"|trans({':url':url|e,':name':tweet.tweeter.name|e, ':date':tweet.timestamp|date("c")})|raw}}
+            <dd>
+                {{tweet.text}}
+            </dd>
+            {% endfor %}
+        </dl>
+        {% endif %}
+        </td>
+    </tr>
+</table>
+{% endblock %}
