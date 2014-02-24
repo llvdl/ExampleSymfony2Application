@@ -11,25 +11,25 @@
 
 
 <h2>Recent tweets</h2>
-<table>
-    <tr>
-        <td>
-            <img src="{{asset('bundles/lennaert/images/bird-blue.png')}}" height="400" align="left"/>
-        </td>
-        <td>
-        {% if recentTweets|length > 0 %}
-        <dl>
-            {% for tweet in recentTweets %}
-            <dt>
+<div style="float:left" width="200px">
+    <img src="{{asset('bundles/lennaert/images/bird-blue.png')}}" width="200" align="left"/>
+</div>
+
+<div style="margin-left: 220px">
+{% if recentTweets|length > 0 %}
+    <dl>
+    {% for tweet in recentTweets %}
+        <dt>
             {% set url = path('_tweets_for_name', {'name':tweet.tweeter.name}) %}
             {{"<a href=\":url\">:name</a> tweeted on :date"|trans({':url':url|e,':name':tweet.tweeter.name|e, ':date':tweet.timestamp|date("c")})|raw}}
-            <dd>
-                {{tweet.text}}
-            </dd>
-            {% endfor %}
-        </dl>
-        {% endif %}
-        </td>
-    </tr>
-</table>
+        </dt>
+        <dd>
+            {{tweet.text}}
+        </dd>
+    {% endfor %}
+    </dl>
+{% else %}
+    <p>There are no tweets :(</p>
+{% endif %}
+</div>
 {% endblock %}

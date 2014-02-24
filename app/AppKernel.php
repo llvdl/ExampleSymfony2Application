@@ -16,7 +16,7 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Finalist\LennaertBundle\LennaertBundle(),
-            new Finalist\TweeterCoreBundle\TweeterCoreBundle(),
+            new Llvdl\TweeterCoreBundle\TweeterCoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
