@@ -18,11 +18,8 @@
         "sensio/distribution-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
-        "incenteev/composer-parameter-handler": "~2.0"
-    },
-    "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "liip/functional-test-bundle": "dev-master"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "llvdl/example-tweeter-core-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
