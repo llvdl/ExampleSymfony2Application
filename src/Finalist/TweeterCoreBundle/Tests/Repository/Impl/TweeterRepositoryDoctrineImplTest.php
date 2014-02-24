@@ -18,7 +18,7 @@ class TweeterRepositoryDoctrineImplTest extends WebTestCase {
     private $subject;
     
     public function setUp() {
-        $this->entityManager = $this->createEntityManager();
+        $this->entityManager = $this->getEntityManager();
                 $client = static::createClient();
         $this->loadFixtures([
             '\Finalist\TweeterCoreBundle\Tests\DataFixtures\Orm\LoadTweetData',
@@ -27,6 +27,11 @@ class TweeterRepositoryDoctrineImplTest extends WebTestCase {
 
         $this->subject = new TweeterRepositoryDoctrineImpl($this->entityManager);
     }
+    
+    public function testImplementsInterface() {
+        $this->assertInstanceOf('Finalist\TweeterCoreBundle\Repository\TweeterRepository', $this->subject);
+    }
+
     
     public function testAdd() {
         $this->assertNull($this->loadTweeterByName('a new name'), 'tweeter with name "a new name" does not exist yet');

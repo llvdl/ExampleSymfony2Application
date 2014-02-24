@@ -18,7 +18,7 @@ class TweetRepositoryDoctrineImplTest extends WebTestCase {
     private $subject;
     
     public function setUp() {
-        $this->entityManager = $this->createEntityManager();
+        $this->entityManager = $this->getEntityManager();
         $client = static::createClient();
         $this->loadFixtures([
             '\Finalist\TweeterCoreBundle\Tests\DataFixtures\Orm\LoadTweetData',
@@ -26,6 +26,10 @@ class TweetRepositoryDoctrineImplTest extends WebTestCase {
         ]);
 
         $this->subject = new TweetRepositoryDoctrineImpl($this->entityManager);
+    }
+    
+    public function testImplementsInterface() {
+        $this->assertInstanceOf('Finalist\TweeterCoreBundle\Repository\TweetRepository', $this->subject);
     }
     
     public function testFindByTweeterNoTweets() {

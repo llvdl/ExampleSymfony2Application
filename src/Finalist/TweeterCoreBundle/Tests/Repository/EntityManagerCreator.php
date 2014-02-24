@@ -4,9 +4,10 @@ namespace Finalist\TweeterCoreBundle\Tests\Repository;
 
 trait EntityManagerCreator {
 
-    private function createEntityManager() {
-        self::$kernel = static::createKernel();
-        self::$kernel->boot();
+    use \Finalist\TweeterCoreBundle\Tests\KernelBooter;
+    
+    private function getEntityManager() {
+        $this->bootKernel();
         $entityManager = self::$kernel->getContainer()
                 ->get('doctrine')
                 ->getManager();

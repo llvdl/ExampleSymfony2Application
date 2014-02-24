@@ -1,7 +1,7 @@
 parameters:
     finalist_tweeter_core.tweeter_service.class: Finalist\TweeterCoreBundle\Service\TweetService
-    finalist_tweeter_core.tweet_repository.class: Finalist\TweeterCoreBundle\Repository\TweetRepositoryDoctrineImpl
-    finalist_tweeter_core.tweeter_repository.class: Finalist\TweeterCoreBundle\Repository\TweeterRepositoryDoctrineImpl
+    finalist_tweeter_core.tweet_repository.class: Finalist\TweeterCoreBundle\Repository\Impl\TweetRepositoryDoctrineImpl
+    finalist_tweeter_core.tweeter_repository.class: Finalist\TweeterCoreBundle\Repository\Impl\TweeterRepositoryDoctrineImpl
 
 services:
     finalist_tweeter_core.tweeter_repository:
@@ -15,5 +15,5 @@ services:
 
     finalist_tweeter_core.tweet_service:
         class: %finalist_tweeter_core.tweeter_service.class%
-        arguments: [@finalist_tweeter_core.tweeter_repository, @finalist_tweeter_core.tweet_repository]
+        arguments: [@finalist_tweeter_core.tweet_repository, @finalist_tweeter_core.tweeter_repository]
 
