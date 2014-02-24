@@ -47,14 +47,19 @@ class TweetService {
     public function createTweet($name, $text) {
         $timestamp = time();
         
+        $tweeter = $this->findOrCreateTweeterByName($name);
+        $tweet = new Tweet($tweeter, $text, $timestamp);
+        $this->tweetRepository->add($tweet);
+        return $tweet;
+    }
+    
+    /** @return Tweeter */
+    private function findOrCreateTweeterByName($name) {
         $tweeter = $this->getTweeterByName($name);
         if($tweeter === null) {
             $tweeter = $this->createTweeter($name);
         }
-        
-        $tweet = new Tweet($tweeter, $text, $timestamp);
-        $this->tweetRepository->add($tweet);
-        return $tweet;
+        return $tweeter;
     }
     
     /** @return Tweeter|NULL */
