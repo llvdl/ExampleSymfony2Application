@@ -58,7 +58,7 @@ class TweetController extends Controller
 
     /** @return \Finalist\TweeterCoreBundle\Service\TweetService */
     private function getTweetService() {
-        return $this->get('finalist_tweeter_core.tweet_service');
+        return $this->get('llvdl_tweeter_core.tweet_service');
     }
     
 }
