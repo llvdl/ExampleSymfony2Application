@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Finalist\LennaertBundle\Model\TweetFormModel;
 use Llvdl\TweeterCoreBundle\Service\TweetService;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /** @Route("/", service="lennaert.tweet.controller") */
 class TweetController
@@ -17,13 +19,15 @@ class TweetController
     private $templating;
     /** @var TweetService */
     private $tweetService;
-    
+    /** @var \Symfony\Component\Routing\Router */
+    private $router;
     /** @var FormFactory */
     private $formFactory;
     
-    public function __construct(EngineInterface $templating, FormFactory $formFactory, TweetService $tweetService) {
+    public function __construct(EngineInterface $templating, FormFactory $formFactory, $router, TweetService $tweetService) {
         $this->templating = $templating;
         $this->formFactory = $formFactory;
+        $this->router = $router;
         $this->tweetService = $tweetService;
     }
     
@@ -71,9 +75,20 @@ class TweetController
         return ['form'=>$form->createView()];
     }
 
-    public function createFormBuilder($data = null, array $options = array())
+    private function createFormBuilder($data = null, array $options = array())
     {
         return $this->formFactory->createBuilder('form', $data, $options);
     }
+    
+    private function redirect($url, $status = 302)
+    {
+        return new RedirectResponse($url, $status);
+    }
+    
+    public function generateUrl($route, $parameters = array(), $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
+    {
+        return $this->router->generate($route, $parameters, $referenceType);
+    }
+
 
 }
