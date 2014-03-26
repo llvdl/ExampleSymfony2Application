@@ -3,16 +3,16 @@
 {% block title %}LennaertBundle:Tweet:home{% endblock %}
 
 {% block body %}
-<h1>Welcome to Tweeter</h1>
+<h1>{{"Welcome to Tweeter"|trans}}</h1>
 
 <form action="{{path('_tweet_create')}}" method="GET">
     <button type="submit">{{"Add a tweet"|trans}}</button>
 </form>
 
 
-<h2>Recent tweets</h2>
+<h2>{{"Recent tweets"|trans}}</h2>
 <div style="float:left" width="200px">
-    <img src="{{asset('bundles/lennaert/images/bird-blue.png')}}" width="200" align="left"/>
+    <img src="{{asset('bundles/lennaert/images/bird-blue.png')}}" alt="{{"Tweeter logo"|trans}}" width="200" align="left"/>
 </div>
 
 <div style="margin-left: 220px">
@@ -29,7 +29,7 @@
     {% endfor %}
     </dl>
 {% else %}
-    <p>There are no tweets :(</p>
+    <p>{{"There are no tweets :("|trans}}</p>
 {% endif %}
 </div>
 {% endblock %}

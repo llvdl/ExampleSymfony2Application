@@ -2,22 +2,34 @@
 
 namespace Finalist\LennaertBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 use Finalist\LennaertBundle\Model\TweetFormModel;
+use Llvdl\TweeterCoreBundle\Service\TweetService;
 
-class TweetController extends Controller
+
+/** @Route("/", service="lennaert.tweet.controller") */
+class TweetController
 {
+    /** @var EngineInterface */
+    private $templating;
+    /** @var TweetService */
+    private $tweetService;
+    
+    public function __construct(EngineInterface $templating, TweetService $tweetService) {
+        $this->templating = $templating;
+        $this->tweetService = $tweetService;
+    }
+    
     /**
      * @Route("/", name="_tweets_home")
      * @Template()
      */
     public function homeAction()
     {
-        $tweetService = $this->getTweetService();
-        $recentTweets = $tweetService->getRecentTweets();
+        $recentTweets = $this->tweetService->getRecentTweets();
         return ['recentTweets'=>$recentTweets];
     }
 
@@ -28,8 +40,7 @@ class TweetController extends Controller
      */
     public function tweetListAction($name)
     {
-        $tweetService = $this->getTweetService();
-        $tweets = $tweetService->getRecentTweetsForTweeter($name);
+        $tweets = $this->tweetService->getRecentTweetsForTweeter($name);
         return ['name'=>$name, 'tweets'=>$tweets];
     }
 
@@ -49,16 +60,11 @@ class TweetController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()) {
-            $this->getTweetService()->createTweet($model->getTweeterName(), $model->getText());
+            $this->tweetService->createTweet($model->getTweeterName(), $model->getText());
             return $this->redirect($this->generateUrl('_tweets_for_name', ['name'=>$model->getTweeterName()]));
         }
         
         return ['form'=>$form->createView()];
-    }
-
-    /** @return \Finalist\TweeterCoreBundle\Service\TweetService */
-    private function getTweetService() {
-        return $this->get('llvdl_tweeter_core.tweet_service');
     }
     
 }

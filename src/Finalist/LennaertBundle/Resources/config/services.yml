@@ -1,7 +1,7 @@
 parameters:
-#    lennaert.example.class: Finalist\LennaertBundle\Example
+    lennaert.tweet.controller.class: Finalist\LennaertBundle\Controller\TweetController
 
 services:
-#    lennaert.example:
-#        class: %lennaert.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    lennaert.tweet.controller:
+        class: %lennaert.tweet.controller.class%
+        arguments: [@templating, @llvdl_tweeter_core.tweet_service]

@@ -10,7 +10,7 @@ class TweetControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/home');
+        $crawler = $client->request('GET', '/');
     }
 
     public function testTweetlist()
