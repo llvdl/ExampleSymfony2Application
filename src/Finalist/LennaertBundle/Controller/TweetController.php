@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 use Finalist\LennaertBundle\Model\TweetFormModel;
 use Llvdl\TweeterCoreBundle\Service\TweetService;
-
+use Symfony\Component\Form\FormFactory;
 
 /** @Route("/", service="lennaert.tweet.controller") */
 class TweetController
@@ -18,8 +18,12 @@ class TweetController
     /** @var TweetService */
     private $tweetService;
     
-    public function __construct(EngineInterface $templating, TweetService $tweetService) {
+    /** @var FormFactory */
+    private $formFactory;
+    
+    public function __construct(EngineInterface $templating, FormFactory $formFactory, TweetService $tweetService) {
         $this->templating = $templating;
+        $this->formFactory = $formFactory;
         $this->tweetService = $tweetService;
     }
     
@@ -66,5 +70,10 @@ class TweetController
         
         return ['form'=>$form->createView()];
     }
-    
+
+    public function createFormBuilder($data = null, array $options = array())
+    {
+        return $this->formFactory->createBuilder('form', $data, $options);
+    }
+
 }

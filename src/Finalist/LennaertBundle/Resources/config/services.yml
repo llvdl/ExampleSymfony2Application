@@ -3,5 +3,5 @@ parameters:
 
 services:
     lennaert.tweet.controller:
-        class: %lennaert.tweet.controller.class%
-        arguments: [@templating, @llvdl_tweeter_core.tweet_service]
+        class: %lennaert.tweet.controller.class%A
+        arguments: [@templating, @form.factory, @llvdl_tweeter_core.tweet_service]
