@@ -15,8 +15,8 @@
                 <target>Welkom bij Tweeter</target>
             </trans-unit>
             <trans-unit id="4">
-                <source><a href=\":url\">:name</a> tweeted on :date</source>
-                <target><a href=\":url\">:name</a> tweette op :date</target>
+                <source>&lt;a href=\":url\">:name&lt;/a> tweeted on :date</source>
+                <target>&lt;a href=\":url\">:name&lt;/a> tweette op :date</target>
             </trans-unit>
             <trans-unit id="5">
                 <source>There are no tweets :(</source>
