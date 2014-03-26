@@ -6,7 +6,7 @@ from a separate bundle. It is created for a Symfony2 introduction workshop.
 
 Installation
 ------------
-Run `composer install` to install the dependencies.
+Run `php composer.phar install` to install the dependencies.
 
 Set up the database
 -------------------
